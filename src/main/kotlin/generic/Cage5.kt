@@ -1,7 +1,8 @@
 package generic
 
 fun main() {
-
+  val cage = Cage5(mutableListOf(Eagle(), Sparrow()))
+  cage.printAfterSorting()
 }
 
 abstract class Bird(

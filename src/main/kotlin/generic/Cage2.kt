@@ -4,7 +4,7 @@ fun main() {
   val cage: Cage2<out Fish> = Cage2<GoldFish>()
 }
 
-class Cage2<T : Any> {
+class Cage2<T : Any> {  //<T : Any> 와 같이 사용하면 Cage2<GoldFish?>() 같은 사용을 비허용한다. 즉 Null이 비허용된다.
   private val animals: MutableList<T> = mutableListOf()
 
   fun getFirst(): T {
