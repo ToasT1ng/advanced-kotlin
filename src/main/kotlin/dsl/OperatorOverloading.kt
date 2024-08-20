@@ -27,8 +27,13 @@ fun main() {
   println(-point)
   println(++point)
 
-  val list = listOf("A", "B", "C")
+  val list = mutableListOf("A", "B", "C")
+  list += "D" // 같은 의미 : list.add("D)
   list[2]
+
+  var list2 = listOf("A", "B", "C")
+  list2 += "D" // 같은 의미 : list2 = list2.plus("D")
+
   val map = mutableMapOf(1 to "A")
   map[2] = "B"
 
