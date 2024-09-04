@@ -21,6 +21,14 @@ object ContainerV1 {
       ?.let { clazz -> clazz.constructors.first().call() as T }
       ?: throw IllegalArgumentException("해당 인스턴스 타입을 찾을 수 없습니다")
   }
+
+  // constructor parameter 가 0개일 경우
+  fun <T : Any> getInstance2(type: KClass<T>): T {
+    return registeredClasses.firstOrNull { clazz -> clazz == type }?.constructors
+      ?.firstOrNull { it.parameters.isEmpty() }
+      ?.let { it.call() as T }
+      ?: throw IllegalArgumentException("해당 인스턴스 타입을 찾을 수 없습니다")
+  }
 }
 
 fun start(clazz: KClass<*>) {
@@ -112,7 +120,7 @@ class BService(
   private val cService: CService?,
 ) {
 
-  constructor(aService: AService): this(aService, null)
+  constructor(aService: AService) : this(aService, null)
 
   fun print() {
     this.aService.print()
